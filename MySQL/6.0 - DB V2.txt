@@ -1,0 +1,23 @@
+Criar table --
+
+	CREATE TABLE IF NOT EXISTS cursos (		// se nao tiver o 'if not' e tiver uma table com esse nome vai sobrescrever ela
+		nome varchar(30) NOT NULL UNIQUE,	// unique faz com que nao exista numeros duplicados, valor unico
+		descricao text,
+		carga int UNSIGNED,			// unsigned tira os sinais, já que nao existe hora negativa, vai economizar bits de memoria
+		totaulas int,
+		ano year DEFAULT '2016'
+	) DEFAULT CHARSET = utf8;
+
+
+Adicionar coluna primaria --
+
+	ALTER TABLE cursos
+	ADD COLUMN idcurso int first;
+
+
+
+Colocar coluna como chave primaria --
+
+	ALTER TABLE cursos
+	ADD PRIMARY KEY (idcurso);
+

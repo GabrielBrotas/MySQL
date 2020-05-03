@@ -1,0 +1,57 @@
+DML - data manipulation language
+
+
+inserir valores
+
+	INSERT INTO pessoas 
+	(nome, nascimento, sexo, peso, altura, nacionalidade)
+	VALUES
+	('gabriel', '2000-05-22', 'M', '65.3', '1.75', 'Brasil');
+
+
+mostrar valores
+
+	SELECT * FROM pessoas;
+
+
+inserir pt2:
+
+	INSERT INTO pessoas 
+	(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+	VALUES
+	(DEFAULT,'pedro', '1998-09-30', 'M', '67', '1.73', DEFAULT);
+
+
+inserir pt 3:
+
+   Caso a ordem for a mesma que a das colunas nao precisa especificar..
+
+	INSERT INTO pessoas 
+	VALUES
+	(DEFAULT,'patricia', '1972-01-28', 'F', '60', '1.59', 'Suecia');
+
+
+inserir pt 4:
+
+   Inserir multiplos valores
+
+	INSERT INTO pessoas 
+	VALUES
+	(DEFAULT,'patricia', '1972-01-28', 'F', '60', '1.59', 'Suecia'),
+	(DEFAULT, 'gilmar', '1962-05-10', 'M', '75', '1.70', 'Canada'),
+	(DEFAULT, 'carlos', '1969-12-15', 'M', '16', '1.68', DEFAULT);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

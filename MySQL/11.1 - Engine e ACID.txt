@@ -1,0 +1,54 @@
+Quando criamos uma tabela precisamos especificar um 'engine'
+
+Ex:
+
+	CREATE TABLE `cursos` (
+  	   `idcurso` int(11) NOT NULL,
+  	   `nome` varchar(30) NOT NULL,
+  	   `descricao` text,
+  	   `carga` int(10) unsigned DEFAULT NULL,
+  	   `totaulas` int(11) DEFAULT NULL,
+  	   `ano` year(4) DEFAULT '2016',
+  	   PRIMARY KEY (`idcurso`),
+    	   UNIQUE KEY `nome` (`nome`)
+
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+ No final do CREATE TABLE tem a engine, nesse nosso caso o default ta o 'MyISAM'
+
+ O Engine permite umas caracteristicas na table, é bom sempre mudar a datbla para a 'InnoDB' que é a mais atual e aceita chave estrangeira
+
+
+A engine do MyISAM não da suporte as quatro principais regras de uma boa transaçao entre tabelas:
+
+regra ACID
+
+A - Atomicidade, ser atomica, nao pode ser dividida em subtarefas tem que fazer a tarefa completa se não nao faz
+C - Consistência, um DB que tava consistente depois da transacao tambem tem que ficar se nao nao vai realizar a transacao e vai voltar para o estado anterior
+I - Isolamento, se ter 2 transacoes acontecendo ao mesmo tempo uma nao vai poder interferir na outra
+D - Durabilidade, se salvar um dado ele tem que ficar lá pelo tempo que for necessario
+
+
+o 'MyISAM' nao tem essas regras por isso sempre vamos mudar para o InnoDB 
+
+	CREATE TABLE `cursos` (
+  	   `idcurso` int(11) NOT NULL,
+  	   `nome` varchar(30) NOT NULL,
+  	   `descricao` text,
+  	   `carga` int(10) unsigned DEFAULT NULL,
+  	   `totaulas` int(11) DEFAULT NULL,
+  	   `ano` year(4) DEFAULT '2016',
+  	   PRIMARY KEY (`idcurso`),
+    	   UNIQUE KEY `nome` (`nome`)
+
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+InnoDB tambem aceita chaves estrangeiras.
+
+	ALTER TABLE `cadastro`.`cursos` 
+	ENGINE = InnoDB ;			// mudando a engine
+
+	ALTER TABLE cadastro.pessoas
+	ENGINE = InnoDB ;

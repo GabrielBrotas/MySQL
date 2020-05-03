@@ -1,0 +1,33 @@
+para fazer backup ou criar uma copia..
+
+1- ir no workbench
+
+2 - server --> data export 
+
+	marcar o db que quer exportar
+
+	marcar as opcoes de configuracao 'dump structure and data' por exmplo.. dentre outras
+
+
+3 - escolher a opcao 'export to self-contained file' que é um arquivo unico ao inves de uma pasta
+
+	escolher a pasta...
+
+4 - marcar a opcao 'Include Create Schema' - para criar um banco de dados mesmo quee ele nao exista (comando create if not exists)
+
+
+5 - start export..
+
+	digitar usuario e senha ('root', '')
+
+
+6 - esse dump(arquivo criado) pode ser aberto no nodepad++ ou no bloco de notas
+
+	vai mostrar o passo a passo que fez para chegar naquele DB
+
+
+7 - exportar vai no mesmo local e clicar em 'Data import' e escolher a pasta
+
+	escolher 'import from self-contained file'
+	
+	e selecionar o arquivo

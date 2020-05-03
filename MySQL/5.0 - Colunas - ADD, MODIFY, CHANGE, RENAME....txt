@@ -1,0 +1,81 @@
+Alterar colunas, inserir colunas
+
+	describe pessoas; 	// ver os campos
+
+1 - inserir campo/coluna -- ADD
+
+	ALTER TABLE pessoas		     // alterar tabela
+	ADD COLUMN profissao varchar(10);    // adicionar coluna
+
+
+   essa coluna vai parar no ultimo endereco, na ultima posicao
+   os dados das pessoas que ja estao no db vao ficar null
+
+
+	ALTER TABLE pessoas
+	DROP COLUMN profissao; 		// REMOVER A COLUNA
+
+
+
+2 - inserir coluna em uma posicao -- FIRST
+
+
+	ALTER TABLE pessoas
+	ADD COLUMN profissao varchar(10) AFTER nome;  // depois do nome inserir a coluna profissao
+
+
+   posicionamento na primeira coluna
+
+	ALTER TABLE pessoas
+	ADD COLUMN codigo varchar(10) FIRST; // o parametro column é opcionar, pode remove lo se quiser
+
+
+
+3 - modificar coluna -- MODIFY
+
+	ALTER TABLE pessoas
+	MODIFY COLUMN profissao varchar(20) NOT NULL DEFAULT '';
+
+
+   o comando modify pode alterar os atributos da coluna mas nao pode alterar o nome dela
+
+   para mudar o nome tem que usar o comando change
+
+
+	ALTER TABLE pessoas
+	CHANGE COLUMNS profissao prof VARCHAR(20) NOT NULL DEFAULT '';
+
+   esse comando a gnt digita o nome velho e o novo e tambem digita as caracteristicas dele se nao vai perder.
+
+
+
+4 - mudar nome da table -- RENAME
+
+	ALTER TABLE pessoas
+	RENAME TO gafanhotos;
+
+
+   quando der o refresh vai alterar o nome da table
+
+
+	ALTER TABLE `cadastro`.`cursos` 
+	ENGINE = InnoDB ;			// mudando a engine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

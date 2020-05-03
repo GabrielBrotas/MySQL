@@ -1,0 +1,174 @@
+Select comandos...
+
+	SELECT * from cursos
+	order by nome;		// ordenar a-z pelo nome
+
+	SELECT * from cursos
+	order by nome desc;	//forma decrescente
+
+
+
+	SELECT nome,carga,ano
+	FROM cursos
+	ORDER BY ano;
+
+
+
+	SELECT nome, carga FROM cursos
+	WHERE ano = '2016'
+	ORDER BY nome;
+	
+
+
+   query = vai ser um request
+   quando fazemos um SELECT estamos solicitando uma query(solicitacao)
+
+	SELECT nome, descricao, carga FROM cursos
+	WHERE ano > '2016'
+	ORDER BY ano, nome;
+
+
+	SELECT nome, descricao, carga FROM cursos
+	WHERE ano <> '2016'				// vai tirar o 2016 da busca
+	ORDER BY ano, nome;
+
+
+OPERADORES ---- (AND, OR, IN, BETWEEN, LIKE...)
+
+BETWEEN --- Faixa de valores
+
+	SELECT nome, descricao, carga FROM cursos
+	WHERE ano BETWEEN 2014 AND 2019
+	ORDER BY ano DESC, nome ASC;			// ano do maior pro menor(decrescente) e o nome de forma ascendente
+
+
+IN ---- condicoes
+
+	SELECT nome, descricao, carga FROM cursos
+	WHERE ano IN (2014, 2016)			// vai mostrar os cursos de 2014 e 2016
+	ORDER BY ano;
+
+
+   AND -
+
+	SELECT nome, descricao, carga FROM cursos
+	WHERE carga > 35 AND totaulas < 30;
+
+
+	
+   OR -
+
+
+LIKE --------- Semelhante
+
+
+	SELECT * FROM cursos
+	WHERE nome LIKE 'P%'	// vai mostrar todos os cursos que começam com 'p', % vai dizer quee tanto faz qualquer caracter quee vim depois
+
+
+	SELECT * FROM cursos
+	WHERE nome LIKE '%a'	// vai mostrar todos os cursos que o final terminem com a
+	
+
+	SELECT * FROM cursos
+	WHERE nome LIKE '%a%'	// vai mostrar todos os cursos que tem 'a' no nome
+
+				
+	SELECT * FROM cursos
+	WHERE nome NOT LIKE '%a%'  // cursos que nao tem a
+
+
+	SELECT * FROM cursos
+	WHERE nome LIKE 'PH%P'	// Cursos que começam com 'ph' e terminam com 'p' Exemplo 'PHP', 'Photoshop'
+
+
+	SELECT * FROM cursos
+	WHERE nome LIKE 'PH%P_'  // O _ torna obrigatorio um caracter naquela posicao, ex 'PHP5' 'PHP4' 'Photshop5'...
+
+
+
+DISTINCT ------- remove duplicados
+
+	SELECT DISTINCT nacionalidade FROM pessoas  // Distinct vai remover os duplicados de nacionalidade
+	ORDER BY nacionalidade;
+
+	
+
+FUNCOES DE AGREGACAO ------
+
+
+COUNT -------  (contador)
+
+	SELECT COUNT(*) FROM cursos WHERE carga > 40;  // quantos cursos tem carga maior que 40
+
+
+MAX ----- (maximo)
+
+	SELECT MAX(totaulas) FROM cursos WHERE ano = '2015';  // curso que teve mais aulas em 2015
+
+
+MIN ----- (minimo)
+
+	SELECT MIN(totaulas) FROM cursos WHERE ano = '2015';
+
+
+SUM ---- (somador)
+
+	SELECT SUM(totaulas) FROM cursos WHERE ano = '2016' // quantos cursos teve em 2016
+
+
+AVG ---- average (media)
+
+	SELECT AVG(totaulas) FROM cursos WHERE ano = '2016' // media do total de aulas que teve em 2016
+
+
+
+AGRUPAR --------------------------- (cria grupos de valores iguais)
+
+
+	SELECT carga FROM cursos
+	GROUP BY carga;			// os valores repetidos vai se agrupar, juntar 
+
+
+
+  exemplo de utilizacao:
+
+	SELECT carga, COUNT(nome) FROM cursos
+	GROUP BY carga;				// vai mostrar quantos valores tem dentro de cada agrupamento, 
+						   no caso do DISTINCT ele vai ignorar os valores repetidos ao inves de juntar
+
+
+	SELECT totaulas, COUNT(*) FROM cursos	// vai agrupar pelo total de aulas e contar quantas aulas tem
+ 	GROUP BY totaulas
+	ORDER BY totaulas;
+
+
+
+	SELECT carga, COUNT(*) FROM cursos
+	WHERE totaulas = 30
+	GROUP BY carga;
+
+
+
+HAVING ---- operador do GROUP BY
+
+	SELECT ano, COUNT(*) FROM cursos
+	GROUP BY ano
+	HAVING COUNT(*) >= 5		// o HAVING so funciona com colunas que nos agrupamos, nesse caso so poderia aceitar 'ano'
+	ORDER BY COUNT(*) DESC;
+
+
+
+SELECT junto
+
+	SELECT carga, COUNT(*) FROM cursos
+	WHERE ano > 2015				// cursos feito acima de 2015
+	GROUP BY carga
+	HAVING carga > (SELECT AVG(carga) FROM cursos);  // tendo a carga maior que a media, colocamos a media com o select para ficar dinamico sempre que a carga mudar
+
+
+
+
+
+
+

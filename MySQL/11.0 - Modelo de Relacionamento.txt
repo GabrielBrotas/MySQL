@@ -1,0 +1,58 @@
+MPM - muitos para muito
+	
+	valores da primeira table pode ter varios relacionamentos com o da segunda e vice versa
+	ex: uma loja, o cliente pode comprar diversos produtos e os produtos podem ser comprados por diversos clientes
+
+UPU - um para um
+
+	valores da primeira so pode ter um relacionamento com o da segunda e vice versa
+	ex: marido e mulher, um para um
+
+UPM - um para muitos
+
+	valores da primeira table pode ter varios relacionamentos com o da segunda porem o da segunda table so vai ter um relacionamento com o da primeira
+	ex: pais e filhos, pais podem ter diversos filhos porem filho so pode ter um pai
+
+
+MPU - muitos para um
+
+	valores da primeira tabela so pode se relacionar com um valor da segunda porem a segunda pode ter varios com a primeira
+
+
+
+As chaves primarias vai identificar cada valor nas table, cpf para pessoas por exemplo pois é um valor unico e individual que cada um tem o seu
+
+A chave primaria quando jogar em outra table vai virar uma chave estrangeira para porder fazer o relacionamento
+
+
+No caso de relacionamento um para um:
+
+	no exemplo do marido e mulher -
+	
+		dentro da table do marido vamos inserir o cpf da mulher para cada marido pois o cpf vai ser a primary key e la o cpf da mulher vai se tornar uma chavee estrangeira
+
+	
+Relacionamento um para muitos:
+
+	no caso de chefe e funcionario (um chefe tem varios funcionario)--
+
+		pegar o cpf(primary-key) do lado unitario (chefe nesse caso) e passar o cpf dele para a table muitos (funcionarios nesse caso)
+		o cpf do chefe vai se tornar a chave estrangeira na table dos funcionarios, ela nao precisa ter o mesmo nome, poderia alterar para cpf-chefe por exemplo
+
+
+Relacionamento muito para muitos
+
+	cliente para produtos, cpf e codigo-produto como chaves primarias
+
+	nesse caso vamos fazer outra table para relacionar com esses dois de forma que fique com a relacao 1-muitos as duas table
+
+	cliente(PK=cpf) 1 - n compras(PK=id-compra) n - 1 produtos(PK=codigo-produto)
+
+	vai juntar a PK do cliente e do produto no id da compra
+
+	compras vai ficar com sua PK e 2 chaves estrangeiras
+
+	
+	 
+
+	

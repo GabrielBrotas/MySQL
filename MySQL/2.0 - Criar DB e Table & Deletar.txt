@@ -1,0 +1,88 @@
+dentro do workbench no local host..
+
+ir em --> 'schemas' no canto inferior esquerdo para mostrar nossos databases
+
+1 - comando para criar novo data base:
+
+	create database <nome do database>;
+	create database cadastro;
+
+clicar no raio com um 'I' para executar o comando dessa linha
+atualizar os schemas para ver o novo db
+
+dentro desse db vai ter as tabelas, views, functions...
+
+
+2 - para criar tabelas vai ser um comando parecido:
+
+   vai criar a table e inserir suas colunas com seu primitivo	
+
+	create table pessoa (
+	nome,
+	idade, //nao se salva idade no db pois muda constantemente
+	sexo,
+	peso,
+	altura,
+	
+
+	);
+
+
+   tipos de primitivos -----------------------------------------
+
+	numerios-
+		inteiro--
+			TinyInt, SmallInt, Int, MediumInt,BigInt
+
+		real--
+			Decimal, Float, Double, Real
+
+		logico--
+			Bit, Boolean
+
+	data/tempo-
+		Date, DateTime, TimeStamp, Time, Year
+
+	literal-
+		Caractere--
+			Char(se dizer que tem 30 caracteres ele vai ocupar todos os 30 mesmo se tiver que colocar espaço para preencher)
+			VarChar(a gnt estipula um valor 30 por exemplo se ocupar so dois ele ignora o restante)
+			
+		Texto --
+			TinyText, Text, MediumText
+
+		Binario-- (blob permite guardar qualquer coisa em binario, ate imagens)
+			TinyBlob, Blob, MediumBlob, LongBlob
+		
+		Colecao--
+			Enum, Set (so vai funcionar com valores permitidos(validacao de dados))
+		 
+	espacial-
+		Geometry, Point, Polygon, Multipolygon
+
+	----------------------------------------------------------
+
+	use cadastro; // tornar o db cadastro ativo
+
+	create table pessoa (
+	nome varchar(30), 
+	idade tinyint, 
+	sexo char(1),
+	peso float,
+	altura float,
+	nacionalidade varchar(20);
+	);
+
+
+   quando atualizar o schema vai aparecer a table no db 'cadastro'
+
+
+	describe pessoas; <- ver as informacoes dessa table
+
+	drop database cadastro; <- apagar o DB para refazer outro mais estruturado
+
+
+
+
+
+	

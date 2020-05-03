@@ -1,0 +1,41 @@
+
+  usando o exemplo de 'pessoas' para 'cursos'
+  pessoas podem assistir varios cursos e os cursos sao assistidos por varias pessoa (relacao n-n, muitos para muitos);
+
+  entao nesse caso a gente vai criar uma table extra para unir a chave primaria de cada um como chave estrangeira em outra table.
+
+  exemplo -
+
+
+	CREATE TABLE pessoa_assiste_curso ( 		   // table onde vai juntar as key
+	   id int NOT NULL AUTO_INCREMENT,		   // Id primaria dessa table
+	   data date,
+	   idpessoa int,				   // Id onde vai virar a foreign key da table pessoas
+	   idcurso int,					   // '' ''    ''   ''  ''  ''     '' ''  ''  cursos.
+	   PRIMARY KEY (id),				   // ID dessa tablee
+	   FOREIGN KEY (idpessoa) REFERENCES pessoas(id),
+	   FOREIGN KEY (idcurso) REFERENCES cursos(idcurso)
+	) ENGINE=InnoDB DEFAULT CHARSET = utf8;
+
+
+
+  Inserir valores ----
+
+	INSERT INTO pessoa_assiste_curso 
+	VALUES (default, '2014-03-01', '1', '3') 	   // default pois vai auto incrementar o id nessa col
+
+    nesse caso está dizendo que a pessoa de id = '1' comecou a assistir o curso de id ='3' no dia '01/03/2014'
+    colocar mais valores na tabela...
+
+
+ SELECT / JOIN ------------
+
+   Mostrar a pessoa e qual curso esta fazendo...
+
+	SELECT p.nome, c.nome FROM pessoas AS p		// pegar o nome da pessoa e qual curso ela ta fazendo (o curso vai vim de outra table)
+	JOIN pessoa_assiste_curso AS a.			// Relacao onde vai ter a pessoa e o curos que fez
+	ON p.id = a.idpessoa				// Juncao onde o id da pessoa vai ser igual a chave estrangeira na table 'a'
+	JOIN curso AS c					// para pegar o nome do curso
+	ON a.idcurso = c.idcurso;
+
+  	

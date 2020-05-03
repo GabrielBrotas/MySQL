@@ -1,0 +1,48 @@
+
+	select nome, cursopreferido from pessoas;
+ 
+ nesse caso vai mostrar o id do curso ao lado do nome, para mostrar o nome do curso vamos ter q unir as duas table
+
+
+	SELECT pessoas.nome, cursos.nome, cursos.ano	// quando junta 2 table no select tem q identificar de qual table vai pegar (pessoas.nome...)
+	FROM pessoas 					// da table pessoas
+	JOIN cursos					// unir com a table cursos 
+	ON cursos.idcurso = pessoas.cursopreferido;	// on(condicao) - onde cursos.id = pessoas.cursopreferido (onde fez a relacao da FOREIGN KEY)
+
+
+ sempre que utilizar JOIN tem que colocar o ON para ter consistencia no filtro
+
+	SELECT p.nome, c.nome, c.ano	
+	FROM pessoas AS p					
+	JOIN cursos AS c				
+	ON c.idcurso = p.cursopreferido
+	ORDER BY p.nome;
+
+
+ INNER JOIN --- 
+
+	esse comando é o default(padrao) vai pegar as colunas que tem valores.
+	as pessoas que nao tem curso preferido nao vao aparecer no filtro.
+
+	SELECT p.nome, c.nome, c.ano	
+	FROM pessoas AS p INNER JOIN cursos AS c				
+	ON c.idcurso = p.cursopreferido
+
+ OUTTER JOIN ----
+
+	outter join vai pegar todos os valores, inclusive quem nao tem curso preferido
+	ele aceita dois parametro 'LEFT' e 'RIGHT'
+
+	LEFT - vai dar prioridade a table da esquerda, vai mostrar atee os alunos que nao preferem nenhum curso
+
+	SELECT p.nome, c.nome, c.ano	
+	FROM pessoas AS p OUTTER LEFT JOIN cursos AS c				
+	ON c.idcurso = p.cursopreferido
+
+
+	RIGHT - vai dar prioridade a table da direita, vai mostrar os cursos que ninguem prefere.
+
+	SELECT p.nome, c.nome, c.ano	
+	FROM pessoas AS p OUTTER LEFT JOIN cursos AS c				
+	ON c.idcurso = p.cursopreferido
+	 

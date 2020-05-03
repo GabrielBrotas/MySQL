@@ -1,0 +1,34 @@
+INSTALAR O MySQL
+
+1 - ir no site do mysql 'developer zone' --> 'downloads' --> 'mysql workbench'
+
+	instalar o workbench e os pre requisitos
+
+2 - instalar o WampServer, ambiente para bancos de dados Apache, MySQL, PHP)
+
+3 - configurando
+
+	depois de instalado abrir o wampserver e esperar o 'W'(canto inferior direito da tela) ficar verde.
+
+	ele estando verde, clicar com o botao esquuero --> 'MySQL' --> 'MySQL console'
+
+	vai pedir um usuario, deixar 'root' por padrao.
+
+	a senha apenas clicar enter '' por padrao.
+
+	username = 'root'
+	password = ''
+
+	depois disso vai entrar no console do mysql
+
+	comando 'status' para verificar se esta funcionando 
+
+4 - abrir o workbench e atualizar os servers
+	
+	vai mostrar o 'local instance wampmysqld64'
+
+	abrir para mostrar o terminal do db
+
+
+	
+		

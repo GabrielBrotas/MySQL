@@ -1,0 +1,98 @@
+
+  Nesse exemplo vamos fazer a relacao de 'Pessoas' e 'Cursos' qual o curso preferido de cada um
+
+  Relacao Muitos par Um (n-1)
+
+
+  (n) 1 pessoa pode ter um curso preferido
+
+  (1) um curso pode ter sido escolhido preferido por varias pessoas
+
+
+  Regra do (1-n) levar a chave primaria do lado unitario (1) e levar para o lado do (n)
+
+  pegar o idcurso e passar para o id pessoas como FOREIGN KEY
+
+  A FOREIGN KEY nao precisa ter o mesmo nome que nas duas table mas precisa ter a mesma caracteristica
+ 	exemplo se for VARCHAR(10) em uma table vai ter que ser na outra tambem so nao vai precisar ter o mesmo nome 
+
+    
+
+
+ Exemplo:
+
+	use cadastro;				// no db cadastro
+
+	ALTER TABLE pessoas			// na table pessoas (n)
+	ADD COLUMN cursopreferido INT;  	// adicionar a coluna cursopreferido
+
+		-----
+ dizer que essa coluna é uma chave estrangeira
+
+
+	ALTER TABLE pessoas			// na table pessoas
+	ADD FOREIGN KEY (cursopreferido)	// colocar a coluna 'cursopreferido' como chave estrangeira
+	REFERENCES cursos(idcurso);		// a referencia dela vai ser o idcurso da table cursos
+	
+	
+ 	describe pessoas;
+
+ output:
+
+	|Fiel__________|Type__|	NULL|	KEY|	
+
+	cursopreferido	int(11)	YES	MUL
+
+
+  no campo KEY de 'cursopreferido' vai esta MUL de chave múltipla(estrangeira)
+
+
+  Agora cadastrar o cursopreferido de cada pessoa
+
+
+	UPDATE pessoas SET cursopreferido = '5' WHERE id = '1';
+
+	...
+
+  Para nao fazer isso um por um vamos dar um 
+
+	SELECT * FROM pessoas;
+
+  E no workbench vamos na coluna e adicionar diretamente e clicar 'APPLY' no canto inferior esquero para salvar as alteracoes.
+	ajuda para nao ter que fazer varios updates.
+
+
+
+INTEGRIDADE REFERENCIAL -----------------
+	
+	ALTER TABLE `cadastro`.`cursos` 
+	ENGINE = InnoDB;			// mudando a engine
+
+	ALTER TABLE cadastro.pessoas
+	ENGINE = InnoDB;
+
+	ALTER TABLE pessoas			// na table pessoas (n)
+	ADD COLUMN cursopreferido INT;
+
+	ALTER TABLE pessoas			// na table pessoas
+	ADD FOREIGN KEY (cursopreferido)	// colocar a coluna 'cursopreferido' como chave estrangeira
+	REFERENCES cursos(idcurso);
+
+
+  depois de feito essa integridade entre as duas table usando o foreign key e as duas ter engino InnoDB vamos tentar deletar um curso...
+
+	delete from cursos where idcurso = '1';
+	
+  output = Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails 	
+
+     como ja tem alguem que prefere esse curso 1 ele nao pode ser deletado pois tem uma relacao nas duas table
+     so poderia deletar se ninguem tivesse escolhido o curso 1 como preferido, ele nao teria relacao nenhuma.
+
+
+
+	
+
+
+
+		
+	 

@@ -1,0 +1,43 @@
+
+	ir no wampserver --> mysql --> my sql console
+
+	show databases;		// mostrar os DB nesse arquivo
+
+	use cadastro;		// acessar o database cadastro
+
+   nesse terminal pode usar os comandos que usou workbench..
+
+
+1 - entrar no phpMyAdmin:
+
+	para abrir o PHPMyAdmin ir no 'W' do wampserver clicar em phpMyAdmin
+	vai abrir a aba na net
+
+	logar inserindo o username e a senha..
+
+	na aba esquerda vai estar DB 'cadastro' la vai poder acessar as table e os dados..
+
+	clicar em alguma table e vai ter acesso a todos os dados,
+
+	em edit vai poder alterar manualmente qualquer informaçao daquela row.
+
+
+2 - Criar DB no phyMyAdmin..
+
+	na aba home --> 'Databases'
+
+	nessa aba vai ter a opcao de digitar o nome do DB para criar
+	selecionar tambem o utf8mb4_general_ci  			// permite acentuacoes 
+
+	clicar em criar e pronto
+
+3 - Criando Table...
+
+	clicando no DB vai ter a opcao 'criar tabela' e vai perguntar o numero de colunas, digitar e clicar executar
+
+	nos espacos vai pedir o nome do campo e as caracteristicas...
+
+	preencher e clicar 'guarda'
+
+
+

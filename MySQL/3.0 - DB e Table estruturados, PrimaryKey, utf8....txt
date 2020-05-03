@@ -1,0 +1,37 @@
+DDL - DATA DEFINITION LANGUAGE
+
+1.0 -criando um DB mais estruturado...
+
+	// esse comando vai permitir o uso de acentuacao no padrao utf8 (america latina)
+
+	create database cadastro
+	default character set utf8
+	default collate utf8_general_ci;
+
+   clicar no 'i' ao lado do db para verificar as informacoes
+
+
+2.0 - criando table estruturada...
+
+
+	CREATE TABLE pessoas (
+		nome varchar(30) NOT NULL, 		     // obrigatorio ter um nome
+		nascimento date,	   		     // armazenar o ano em que a pessoa nasceu, evita ter que atualizar a idade da pessoa sempre que fizer aniversario
+		sexo eneum('M','F'),	   		     // so vai aceitar esses dois valores (validacao de dados)
+		peso decimal(5,2),	   	 	     // 5 seria a quantidade de casas _ _ _ _ _ e 2 a quantidade de casas depois da virgula = _ _ _ ,_ _
+		altura decimal(3,2),	   		     // _, _ _
+		nacionalidade varchar(20) DEFAULT 'Brasil',  // se nao digitar nada vai ser Brasil
+	)DEFAULT CHARSET = utf8	
+
+3.0 - colocando chave primaria para pessoas nao terem o mesmo valor
+
+	CREATE TABLE pessoas (
+		id int NOT NULL AUTO_INCREMENT, // vai auto incrementar os numeros 1,2,3,4...
+		nome varchar(30) NOT NULL, 		     
+		nascimento date,	   		    
+		sexo eneum('M','F'),	   		     
+		peso decimal(5,2),	   	 	     
+		altura decimal(3,2),	   		     
+		nacionalidade varchar(20) DEFAULT 'Brasil',
+		PRIMARY KEY (id)  
+	)DEFAULT CHARSET = utf8	
